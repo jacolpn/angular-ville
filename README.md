@@ -1,4 +1,4 @@
-# Meat - Angular App Starter
+# Ville - Angular App Starter
 
 ## 1. Passos para começar
 
@@ -18,7 +18,7 @@
 
 ### Iniciando o serviço (raiz da aplicação)
 
-`json-server db.json`
+`json-server db.json` (port 3000)
 
 ## Goodies
 
