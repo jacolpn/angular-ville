@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { Restaurant } from './restaurant-list/restaurant-list.model';
+import { MenuItem } from '../restaurant-detail/menu-item/menu-item.model';
 
 import { VILLE_API } from './../app.api';
 
@@ -30,5 +31,11 @@ export class RestaurantsService {
     return this.http.get(`${VILLE_API}/restaurants/${id}/reviews`)
     .map(response => response.json())
     .catch(ErrorHandler.handlerError);
+  }
+
+  menuOfRestaurant(id: string): Observable<MenuItem[]> {
+    return this.http.get(`${VILLE_API}/restaurants/${id}/menu`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handlerError);
   }
 }
