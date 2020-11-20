@@ -19,4 +19,4 @@ export const ROUTES: Routes = [
       { path: 'reviews', component: ReviewsComponent }
     ]
   }
-]
+];
