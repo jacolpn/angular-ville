@@ -1,0 +1,14 @@
+<section class="content-header">
+  <h1>Todos os Restaurantes</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div
+      *ngFor="let restaurant of restaurants"
+      class="col-sm-6 col-xs-12"
+    >
+      <mt-restaurant-list [restaurant]="restaurant">
+      </mt-restaurant-list>
+    </div>
+  </div>
+</section>
