@@ -1,7 +1,7 @@
 <section class="content">
   <section class="invoice">
-    {{ form.valid }}
-    {{ form.value | json }}
+    <!-- {{ form.valid }} -->
+    <!-- {{ form.value | json }} -->
     <form novalidate #form="ngForm">
       <div class="row">
         <div class="col-xs-12">
@@ -55,7 +55,7 @@
               type="text"
               class="form-control"
               placeholder="Complemento"
-              name="optional"
+              name="optionalAddress"
               ngModel
               autocomplete="off"
             >
@@ -107,6 +107,7 @@
           href="order-summary.html"
           class="btn btn-success pull-right"
           [disabled]="!form.valid || cartItems().length === 0"
+          (click)="checkOrder(form.value)"
         >
             <i class="fa fa-credit-card"></i> Concluir Pedido
       </button>

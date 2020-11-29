@@ -370,5 +370,45 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "Jackson",
+      "number": "1994",
+      "optionalAddress": "Neves",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 2,
+          "menuId": "espreso"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "address": "Jackson Neves",
+      "number": "123",
+      "optionalAddress": "Prédio",
+      "paymentOption": "DEB",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "starb"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "address": "Rua O",
+      "number": "191",
+      "optionalAddress": "Cassino",
+      "paymentOption": "VR",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "chocpop"
+        }
+      ],
+      "id": 3
+    }
+  ]
 }
