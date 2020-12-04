@@ -1,7 +1,5 @@
+import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { OrderService } from './order/order.service';
-import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-cart.service';
-import { RestaurantsService } from './restaurant/restaurants.service';
 import { ROUTES } from './app-route';
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
@@ -38,12 +36,10 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES),
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   providers: [
-    RestaurantsService,
-    ShoppingCartService,
-    OrderService,
     { provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent]
