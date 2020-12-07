@@ -1,3 +1,4 @@
+import { NotificationService } from './messages/notification.service';
 import { OrderService } from './../order/order.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingComponent } from './rating/rating.component';
@@ -38,7 +39,8 @@ export class SharedModule {
       providers: [
         ShoppingCartService,
         RestaurantsService,
-        OrderService
+        OrderService,
+        NotificationService
       ]
     }
   }
