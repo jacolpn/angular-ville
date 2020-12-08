@@ -9,12 +9,12 @@
     </p>
     <p>
       <mt-rating
-        (rated)="rated = true"
+        (rated)="rate()"
         [hidden]="rated"
       >
       </mt-rating>
     </p>
-      <p [hidden]="!rated">
+      <p *ngIf="!rated">
         Obrigado pela sua avaliação!
       </p>
   </div>

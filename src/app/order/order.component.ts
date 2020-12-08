@@ -17,7 +17,7 @@ export class OrderComponent implements OnInit {
 
   orderForm: FormGroup;
 
-  delivery: number = 8;
+  delivery = 8;
 
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
@@ -40,7 +40,7 @@ export class OrderComponent implements OnInit {
       number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optionalAddress: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('', [Validators.required])
-    }, { validator: OrderComponent.equalsTo })
+    }, { validator: OrderComponent.equalsTo });
   }
 
   static equalsTo(group: AbstractControl): { [key: string]: boolean } {
@@ -52,7 +52,7 @@ export class OrderComponent implements OnInit {
     }
 
     if (email.value !== emailConfirmation.value) {
-      return { emailsNotMatch: true }
+      return { emailsNotMatch: true };
     }
 
     return undefined;
