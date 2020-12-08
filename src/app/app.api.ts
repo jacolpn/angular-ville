@@ -1,1 +1,3 @@
-export const VILLE_API = 'http://localhost:3000';
+import { environment } from './../environments/environment';
+
+export const VILLE_API = environment.api;

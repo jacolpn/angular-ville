@@ -11,7 +11,7 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './snackbar.component.html',
   styleUrls: ['./snackbar.component.css'],
   animations: [
-    trigger('snack-visibility',[
+    trigger('snack-visibility', [
       state('hidden', style({
         opacity: 0,
         bottom: 0
@@ -34,7 +34,7 @@ import 'rxjs/add/operator/switchMap';
 export class SnackbarComponent implements OnInit {
 
   message: string;
-  snackVisibility: string = 'hidden';
+  snackVisibility = 'hidden';
 
   constructor(private notificationService: NotificationService) { }
 
@@ -43,7 +43,7 @@ export class SnackbarComponent implements OnInit {
       this.message = message;
       this.snackVisibility = 'visible';
     }).switchMap(message => Observable.timer(2000))
-      .subscribe(timer => this.snackVisibility = 'hidden')
+      .subscribe(timer => this.snackVisibility = 'hidden');
   }
 
 }

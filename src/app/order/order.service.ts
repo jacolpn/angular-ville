@@ -2,7 +2,7 @@ import { VILLE_API } from './../app.api';
 import { Observable } from 'rxjs/Observable';
 import { CartItem } from './../restaurant-detail/shopping-cart/shopping-cart.model';
 import { ShoppingCartService } from './../restaurant-detail/shopping-cart/shopping-cart.service';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Order } from './order.model';
 import { Http, RequestOptions, Headers } from '@angular/http';
 
