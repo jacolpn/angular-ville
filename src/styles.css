@@ -264,3 +264,13 @@ body {
   border: 0px;
   opacity: 0;
 }
+
+/* Barra de busca de restaurantes */
+.search-link {
+  cursor: pointer;
+  color: #555;
+}
+
+.search-link:hover {
+  color: #dd4b39;
+}
