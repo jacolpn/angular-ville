@@ -1,7 +1,15 @@
+import { Observable } from 'rxjs/Observable';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { RestaurantsService } from './restaurants.service';
 import { Restaurant } from './restaurant-list/restaurant-list.model';
 import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/from';
 
 @Component({
   selector: 'mt-restaurant',
@@ -25,10 +33,31 @@ export class RestaurantComponent implements OnInit {
 
   searchBarState = 'hidden';
   restaurants: Restaurant[];
+  searchForm: FormGroup;
+  searchControl: FormControl;
 
-  constructor(private restaurantsService: RestaurantsService) { }
+  constructor(
+    private restaurantsService: RestaurantsService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.searchControl = this.fb.control('');
+
+    this.searchForm = this.fb.group({
+      searchControl: this.searchControl
+    });
+
+    this.searchControl.valueChanges
+    .debounceTime(500)
+    .distinctUntilChanged()
+    .do(searchTerm => console.log(`q=${searchTerm}`))
+    .switchMap(
+      searchTerm => this.restaurantsService
+        .restaurants(searchTerm)
+        .catch(error => Observable.from([]))
+    ).subscribe(restaurants => this.restaurants = restaurants)
+
     this.restaurantsService
       .restaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
