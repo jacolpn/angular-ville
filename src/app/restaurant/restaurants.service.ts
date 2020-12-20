@@ -1,6 +1,6 @@
 import { ErrorHandler } from './../app.error-handler';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -13,7 +13,7 @@ import { VILLE_API } from './../app.api';
 
 @Injectable()
 export class RestaurantsService {
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   restaurants(): Observable<Restaurant[]> {
     return this.http.get(`${VILLE_API}/restaurants`)
@@ -22,20 +22,14 @@ export class RestaurantsService {
   }
 
   restaurantById(id: string): Observable<Restaurant> {
-    return this.http.get(`${VILLE_API}/restaurants/${id}`)
-      .map(response => response.json())
-      .catch(ErrorHandler.handlerError);
+    return this.http.get<Restaurant>(`${VILLE_API}/restaurants/${id}`)
   }
 
   reviewsOfRestaurant(id: string): Observable<any> {
     return this.http.get(`${VILLE_API}/restaurants/${id}/reviews`)
-      .map(response => response.json())
-      .catch(ErrorHandler.handlerError);
   }
 
   menuOfRestaurant(id: string): Observable<MenuItem[]> {
-    return this.http.get(`${VILLE_API}/restaurants/${id}/menu`)
-      .map(response => response.json())
-      .catch(ErrorHandler.handlerError);
+    return this.http.get<MenuItem[]>(`${VILLE_API}/restaurants/${id}/menu`)
   }
 }
