@@ -15,8 +15,8 @@ import { VILLE_API } from './../app.api';
 export class RestaurantsService {
   constructor(private http: Http) {}
 
-  restaurants(): Observable<Restaurant[]> {
-    return this.http.get(`${VILLE_API}/restaurants`)
+  restaurants(search?: string): Observable<Restaurant[]> {
+    return this.http.get(`${VILLE_API}/restaurants`, { params: { q: search }})
       .map(response => response.json())
       .catch(ErrorHandler.handlerError);
   }
