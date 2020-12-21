@@ -2,7 +2,7 @@ import { SharedModule } from './shared/shared.module';
 import { ROUTES } from './app-route';
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -38,7 +38,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
+    HttpClientModule,
     SharedModule.forRoot(),
     RouterModule.forRoot(
       ROUTES,

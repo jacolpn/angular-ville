@@ -4,14 +4,14 @@ import { CartItem } from './../restaurant-detail/shopping-cart/shopping-cart.mod
 import { ShoppingCartService } from './../restaurant-detail/shopping-cart/shopping-cart.service';
 import { Injectable } from '@angular/core';
 import { Order } from './order.model';
-import { Http, RequestOptions, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class OrderService {
 
   constructor(
     private cartService: ShoppingCartService,
-    private http: Http
+    private http: HttpClient
   ) { }
 
   itemsValue(): number {
@@ -40,16 +40,8 @@ export class OrderService {
 
   // checkOrder(order: Order): Observable<Order> {
     checkOrder(order: Order): Observable<string> {
-    const headers = new Headers();
-
-    headers.append('Content-Type', 'application/json');
-
-    return this.http.post(
-        `${VILLE_API}/orders`,
-        JSON.stringify(order),
-        new RequestOptions({ headers: headers })
-      )
-      .map(response => response.json())
-      .map(order => order.id);
+    return this.http.post<Order>(
+      `${VILLE_API}/orders`, order)
+        .map(order => order.id);
   }
 }
