@@ -6,9 +6,11 @@ import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
+import { LoginComponent } from './security/login/login.component';
 
 export const ROUTES: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'about', loadChildren: './about/about.module#AboutModule' },
   { path: 'restaurant', component: RestaurantComponent },
   { path: 'order', loadChildren: './order/order.module#OrderModule' },
