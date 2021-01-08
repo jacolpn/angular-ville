@@ -1,3 +1,4 @@
+import { LoginService } from './../security/login/login.service';
 import { NotificationService } from './messages/notification.service';
 import { OrderService } from './../order/order.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,7 +41,8 @@ export class SharedModule {
         ShoppingCartService,
         RestaurantsService,
         OrderService,
-        NotificationService
+        NotificationService,
+        LoginService
       ]
     };
   }
