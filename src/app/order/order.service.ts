@@ -39,9 +39,12 @@ export class OrderService {
   }
 
   // checkOrder(order: Order): Observable<Order> {
-    checkOrder(order: Order): Observable<string> {
+  checkOrder(order: Order): Observable<string> {
     return this.http.post<Order>(
-      `${VILLE_API}/orders`, order)
-        .map(order => order.id);
+      `${VILLE_API}/orders`,
+      order,
+      // { headers: headers } //Obriga estar logado
+    )
+      .map(order => order.id);
   }
 }
