@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         `Bem vindo, ${user.name}`
       ), response => this.notificationService.notify(response.error.message),
         () => {
-          this.router.navigate([btoa(this.navigateTo)]);
+          this.router.navigate([atob(this.navigateTo)]);
         }
     );
   }
