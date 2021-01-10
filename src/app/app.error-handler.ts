@@ -14,7 +14,7 @@ export class ApplicationErrorHandler extends ErrorHandler {
     super();
   }
 
-  handleError(errorResponse: HttpErrorResponse | any) {
+  handlerError(errorResponse: HttpErrorResponse | any) {
     if (errorResponse instanceof HttpErrorResponse) {
       const message = errorResponse.error.message;
 
