@@ -32,23 +32,21 @@ export class OrderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.orderForm = new FormGroup ({
-      name: new FormControl(
-        '',
-        {
-          validators: [Validators.required, Validators.minLength(5)],
-        }
-      ),
+    this.orderForm = this.formBuilder.group({
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
       email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       address: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
       number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
-      optionalAddress: this.formBuilder.control(''),
+      // optionalAddress: this.formBuilder.control(''),
+      optionalAddress: new FormControl(
+        '',
+        {
+          updateOn: 'blur'
+        }
+      ),
       paymentOption: this.formBuilder.control('', [Validators.required])
-    }, {
-      validators: [OrderComponent.equalsTo],
-      updateOn: 'blur'
-    });
+    }, { validator: OrderComponent.equalsTo });
   }
 
   static equalsTo(group: AbstractControl): { [key: string]: boolean } {
