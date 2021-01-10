@@ -1,4 +1,3 @@
-import { ErrorHandler } from './../app.error-handler';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -16,13 +15,13 @@ export class RestaurantsService {
   constructor(private http: HttpClient) {}
 
   restaurants(search?: string): Observable<Restaurant[]> {
-    let params: HttpParams;
+    let params: HttpParams = undefined;
 
     if (search) {
-      params = new HttpParams().set('q', search);
+      params = new HttpParams().append('q', search);
     }
 
-    return this.http.get<Restaurant[]>(`${VILLE_API}/restaurants`, { params: params });
+    return this.http.get<Restaurant[]>(`${VILLE_API}/restaurantss`, { params: params });
   }
 
   restaurantById(id: string): Observable<Restaurant> {

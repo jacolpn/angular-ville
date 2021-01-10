@@ -1,7 +1,8 @@
+import { ApplicationErrorHandler } from './app.error-handler';
 import { SharedModule } from './shared/shared.module';
 import { ROUTES } from './app-route';
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,6 +51,7 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     )
   ],
   providers: [
+    { provide: ErrorHandler, useClass: ApplicationErrorHandler},
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
