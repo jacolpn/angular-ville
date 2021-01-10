@@ -21,7 +21,7 @@
             </th>
 
             <td class="text-right">
-              {{ item.value() | currency: 'BRL': true}}
+              {{ item.value() | currency: 'BRL': 'symbol'}}
             </td>
 
             <td class="text-right">
@@ -36,7 +36,7 @@
             <th>Total:</th>
 
             <td class="text-right">
-              {{ total() | currency: 'BRL': true }}
+              {{ total() | currency: 'BRL': 'symbol' }}
             </td>
           </tr>
         </tbody></table>
