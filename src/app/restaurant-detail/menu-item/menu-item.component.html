@@ -10,7 +10,7 @@
       {{ menuItem.description }}
     </span>
     <span class="menu-item-info-box-price">
-      {{ menuItem.price | currency: 'BRL': true }}
+      {{ menuItem.price | currency: 'BRL': 'symbol' }}
     </span>
     <a class="" (click)="emitAddEvent()">
       <i class="fa fa-plus-circle"></i>

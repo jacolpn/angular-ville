@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
+import { Observable } from 'rxjs';
 import { Restaurant } from './restaurant-list/restaurant-list.model';
 import { MenuItem } from '../restaurant-detail/menu-item/menu-item.model';
-
 import { VILLE_API } from './../app.api';
 
 @Injectable()
@@ -21,7 +16,7 @@ export class RestaurantsService {
       params = new HttpParams().append('q', search);
     }
 
-    return this.http.get<Restaurant[]>(`${VILLE_API}/restaurantss`, { params: params });
+    return this.http.get<Restaurant[]>(`${VILLE_API}/restaurants`, { params: params });
   }
 
   restaurantById(id: string): Observable<Restaurant> {

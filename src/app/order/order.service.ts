@@ -1,5 +1,6 @@
 import { VILLE_API } from './../app.api';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CartItem } from './../restaurant-detail/shopping-cart/shopping-cart.model';
 import { ShoppingCartService } from './../restaurant-detail/shopping-cart/shopping-cart.service';
 import { Injectable } from '@angular/core';
@@ -45,6 +46,6 @@ export class OrderService {
       order,
       // { headers: headers } //Obriga estar logado
     )
-      .map(order => order.id);
+      .pipe(map(order => order.id));
   }
 }

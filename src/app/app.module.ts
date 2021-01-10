@@ -19,7 +19,11 @@ import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.compo
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
+import locatePt from '@angular/common/locales/pt';
+
+registerLocaleData(locatePt, 'pt');
+
 import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
 
@@ -53,7 +57,7 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
   providers: [
     { provide: ErrorHandler, useClass: ApplicationErrorHandler},
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    { provide: LOCALE_ID, useValue: 'pt-BR'}
+    { provide: LOCALE_ID, useValue: 'pt'}
   ],
   bootstrap: [AppComponent]
 })

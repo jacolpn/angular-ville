@@ -3,19 +3,19 @@
     <tbody><tr>
       <th style="width:50%">Itens:</th>
       <td class="text-right">
-        {{ itemsValue | currency: 'BRL': true }}
+        {{ itemsValue | currency: 'BRL': 'symbol' }}
       </td>
     </tr>
     <tr>
       <th>Frete:</th>
       <td class="text-right">
-        {{ delivery | currency: 'BRL': true }}
+        {{ delivery | currency: 'BRL': 'symbol' }}
       </td>
     </tr>
     <tr>
       <th>Total:</th>
       <td class="text-right">
-        {{ total() | currency: 'BRL': true }}
+        {{ total() | currency: 'BRL': 'symbol' }}
       </td>
     </tr>
   </tbody></table>
