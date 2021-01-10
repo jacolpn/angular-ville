@@ -38,6 +38,9 @@ Expressões regulares usadas na validação de formulários
 ## Instalações
 `npm i nodemon -g`
 
+## Produção
+`ng build --prod --extract-css=false` - Para criar um build sem problemas no css.
+
 ## Créditos
 
 Todas as imagens usadas na aplicação são pertencentes a freepik.com
