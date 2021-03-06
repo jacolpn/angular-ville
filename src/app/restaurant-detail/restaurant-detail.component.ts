@@ -1,7 +1,9 @@
-import { Restaurant } from './../restaurant/restaurant-list/restaurant-list.model';
-import { RestaurantsService } from './../restaurant/restaurants.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
+import { VILLE_API } from './../app.api';
+import { Restaurant } from './restaurant.model';
 
 @Component({
   selector: 'mt-restaurant-detail',
@@ -12,13 +14,14 @@ export class RestaurantDetailComponent implements OnInit {
   restaurant: Restaurant;
 
   constructor(
-    private restaurantService: RestaurantsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
-    this.restaurantService.restaurantById(this.route.snapshot.params['id'])
-      .subscribe(restaurant => this.restaurant = restaurant);
+      return this.http
+        .get<Restaurant>(`${VILLE_API}/restaurants/bread-bakery`)
+        .subscribe(restaurant => this.restaurant = restaurant);
   }
 
 }

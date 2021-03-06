@@ -1,7 +1,10 @@
 import { Observable } from 'rxjs';
-import { RestaurantsService } from './../../restaurant/restaurants.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
+import { VILLE_API } from './../../app.api';
+import { Restaurant } from '../restaurant.model';
 
 @Component({
   selector: 'mt-reviews',
@@ -12,13 +15,13 @@ export class ReviewsComponent implements OnInit {
   reviews: Observable<any>;
 
   constructor(
-    private restaurantsService: RestaurantsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
-    this.reviews = this.restaurantsService
-      .reviewsOfRestaurant(this.route.parent.snapshot.params['id']);
+    this.reviews = this.http
+      .get<Restaurant>(`${VILLE_API}/restaurants/bread-bakery/reviews`);
   }
 
 }

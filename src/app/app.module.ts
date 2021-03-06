@@ -9,8 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { RestaurantComponent } from './restaurant/restaurant.component';
-import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shopping-cart.component';
@@ -30,8 +28,6 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    RestaurantComponent,
-    RestaurantListComponent,
     RestaurantDetailComponent,
     MenuComponent,
     ShoppingCartComponent,
