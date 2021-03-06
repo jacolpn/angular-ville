@@ -1,4 +1,3 @@
-import { ApplicationErrorHandler } from './app.error-handler';
 import { SharedModule } from './shared/shared.module';
 import { ROUTES } from './app-route';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +23,6 @@ import locatePt from '@angular/common/locales/pt';
 
 registerLocaleData(locatePt, 'pt');
 
-import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
 
 @NgModule({
@@ -41,7 +39,6 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     ReviewsComponent,
     OrderSummaryComponent,
     NotFoundComponent,
-    LoginComponent,
     UserDetailComponent
   ],
   imports: [
@@ -55,7 +52,6 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     )
   ],
   providers: [
-    { provide: ErrorHandler, useClass: ApplicationErrorHandler},
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: LOCALE_ID, useValue: 'pt'}
   ],

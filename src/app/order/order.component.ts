@@ -18,6 +18,7 @@ export class OrderComponent implements OnInit {
   orderForm: FormGroup;
   delivery = 8;
   orderId: string;
+  whats = null;
 
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
@@ -33,19 +34,32 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
-      email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      address: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
-      number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
+      name: this.formBuilder.control(
+        'Jackson Neves',
+        [Validators.required, Validators.minLength(5)]
+      ),
+      email: this.formBuilder.control(
+        'jacoLPN@outlook.com',
+        [Validators.required, Validators.pattern(this.emailPattern)]
+      ),
+      emailConfirmation: this.formBuilder.control(
+        'jacoLPN@outlook.com',
+        [Validators.required, Validators.pattern(this.emailPattern)]
+      ),
+      address: this.formBuilder.control(
+        'Rua Xanxerê',
+        [Validators.required, Validators.minLength(5)]
+      ),
+      number: this.formBuilder.control(
+        '650',
+        [Validators.required, Validators.pattern(this.numberPattern)]
+      ),
       // optionalAddress: this.formBuilder.control(''),
       optionalAddress: new FormControl(
-        '',
-        {
-          updateOn: 'blur'
-        }
+        'Apto 104, BL 03',
+        { updateOn: 'blur' }
       ),
-      paymentOption: this.formBuilder.control('', [Validators.required])
+      paymentOption: this.formBuilder.control('MON', [Validators.required])
     }, { validator: OrderComponent.equalsTo });
   }
 
@@ -91,17 +105,32 @@ export class OrderComponent implements OnInit {
   checkOrder(order: Order) {
     order.orderItems = this
       .cartItems()
-      .map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id));
+      .map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id, item.menuItem.name));
     this.orderService
       .checkOrder(order)
       .pipe(tap((orderId: string) => {
         this.orderId = orderId;
       }))
       .subscribe((orderId: string) => {
-        this.router.navigate(['/order-summary']);
-        console.log(`Compra concluída: ${orderId}.`);
+        let itens = [];
+
+        itens = order.orderItems.map(item => (` (${item.quantity}) ${item.name}`));
+        //96974076
+        //997737168
+        this.whats =
+          `https://web.whatsapp.com/send/?phone=+554796974076&text=` +
+          `Olá VilleMeat, gostaria de${itens}` +
+          // `Olá Angélica, gostaria de (${order.orderItems[0].quantity}) ${order.orderItems[0].name}. ` +
+          `. Entregar no endereço: ${order.address}, Nº ${order.number}. (Ass. Jackson)`;
+        
+        window.location.href = this.whats;
+        // this.router.navigate(['/order-summary']);
+        // window.open(this.whats, '_blank');
         this.orderService.clear();
+
+        console.log(`Compra concluída: ${orderId}.`);
+        console.log(itens);
+        console.log(this.whats);
       });
-    console.log(order);
   }
 }

@@ -21,7 +21,7 @@
 `json-server db.json` (port 3000)
 `tsc -w` - `(dentro da pasta backend)`
 `node backend/server`
-`nodemon --watch backend .\backend\dist\server.js`
+`nodemon --watch backend .\backend\dist\server.js` (lembrar de entrar no localhost 3000 e liberar acesso)
 
 ## Goodies
 
@@ -37,6 +37,11 @@ Expressões regulares usadas na validação de formulários
 
 ## Instalações
 `npm i nodemon -g`
+`npm install jsonwebtoken`
+`npm i --save-dev @types/node`
+`choco install nodejs.install --version=8.9.4`
+`choco install nodejs.install --version=10.0.0`
+`npm i @angular/cli@6.0.0`
 
 ## Produção
 `ng build --prod --extract-css=false` - Para criar um build sem problemas no css.

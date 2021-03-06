@@ -1,4 +1,4 @@
-import { Observable, timer } from 'rxjs';
+import { timer } from 'rxjs';
 import { NotificationService } from './../notification.service';
 import { Component, OnInit } from '@angular/core';
 import { state, style, trigger, transition, animate } from '@angular/animations';
